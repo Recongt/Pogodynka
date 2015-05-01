@@ -27,8 +27,10 @@ public class ParentLevelExpandableListAdapter extends BaseExpandableListAdapter
     public View getChildView(int groupPosition, int childPosition,
                              boolean isLastChild, View convertView, ViewGroup parent)
     {
-        //TO DO: add SubLevelList
-        return View coś!!!!
+        CustomExpandableListview SecondLevelExpandableList = new CustomExpandableListview(convertView.getContext());
+        SecondLevelExpandableList.setAdapter(new SecondLevelAdapter());
+        SecondLevelExpandableList.setGroupIndicator(null);
+        return SecondLevelExpandableList;
     }
 
     @Override
