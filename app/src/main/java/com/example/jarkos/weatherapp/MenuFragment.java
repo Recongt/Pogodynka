@@ -19,10 +19,16 @@ public class MenuFragment extends Fragment {
     private Fragment frag;
     private FragmentTransaction fragTransaction;
 
-    private ExpandableListAdapter listAdapter;
+//    private ExpandableListAdapter listAdapter;
+    private ParentLevelExpandableListAdapter listAdapter;
     private ExpandableListView expListView;
-    private List<String> listDataHeader;
-    private HashMap<String, List<String>> hashListDataChild;
+    private List<String> continentListDataHeader;
+    private List<String> countryListDataHeader;
+   // private HashMap<String, List<String>> hashContinentListDataChild;
+    private HashMap<String, List<ArrayList<String>>> hashContinentListDataChild2;
+
+    private HashMap<String, List<String>> PolskaListDataChild;
+    private HashMap<String, List<String>> hashListDataChild2;
 
     public MenuFragment()
     {}
@@ -38,11 +44,11 @@ public class MenuFragment extends Fragment {
     {
         View view = inflater.inflate(R.layout.fragment_menu,container,false);
         expListView = (ExpandableListView) view.findViewById(R.id.expanadableListView);
-      // Button btnSimple = (Button) view.findViewById(R.id.btnSimple);
 
         loadListData();
 
-        listAdapter = new ExpandableListAdapter(view.getContext(), listDataHeader, hashListDataChild);
+//        listAdapter = new ExpandableListAdapter(view.getContext(), continentListDataHeader, hashContinentListDataChild2, hashListDataChild2);
+        listAdapter = new ParentLevelExpandableListAdapter(view.getContext());
 
         expListView.setAdapter(listAdapter);
 
@@ -60,17 +66,33 @@ public class MenuFragment extends Fragment {
     }
 
     private void loadListData() {
-        listDataHeader = new ArrayList<String>();
-        hashListDataChild = new HashMap<String, List<String>>();
+        continentListDataHeader = new ArrayList<String>();
+        hashContinentListDataChild2 = new HashMap<String, List<ArrayList<String>>>();
 
         // Adding child data
-        listDataHeader.add("Afryka");
-        listDataHeader.add("Ameryka Płn.");
-        listDataHeader.add("Azja");
-        listDataHeader.add("Europa");
+        continentListDataHeader.add("DupaKonta");
+//        continentListDataHeader.add("Afryka");
+//        continentListDataHeader.add("Ameryka Płn.");
+//        continentListDataHeader.add("Azja");
+//        continentListDataHeader.add("Europa");
 
         // Adding child data
+        List<ArrayList<String>> dupaKontynent = new ArrayList<ArrayList<String>>();
+        //countryListDataHeader.add("Afryka");
+        ArrayList<String> poland = new ArrayList<String>();
+        poland.add("Warszaw");
+        poland.add("Kraków");
+        poland.add("Łódź");
+        dupaKontynent.add(poland);
+
+        ArrayList<String> germany = new ArrayList<String>();
+        germany.add("Berlin");
+        germany.add("Munchen");
+        germany.add("Hamburg");
+        dupaKontynent.add(germany);
+
         List<String> africa = new ArrayList<String>();
+        //countryListDataHeader.add("Afryka");
         africa.add("C1");
         africa.add("C2");
         africa.add("C3");
@@ -94,10 +116,11 @@ public class MenuFragment extends Fragment {
         europa.add("C2");
         europa.add("C3");
 
-        hashListDataChild.put(listDataHeader.get(0), africa); // Header, Child data
-        hashListDataChild.put(listDataHeader.get(1), northAmerica);
-        hashListDataChild.put(listDataHeader.get(2), asia);
-        hashListDataChild.put(listDataHeader.get(3), europa);
+        hashContinentListDataChild2.put(continentListDataHeader.get(0), dupaKontynent); // Header, Child data
+//        hashContinentListDataChild.put(continentListDataHeader.get(1), africa);
+//        hashContinentListDataChild.put(continentListDataHeader.get(2), northAmerica);
+//        hashContinentListDataChild.put(continentListDataHeader.get(3), asia);
+//        hashContinentListDataChild.put(continentListDataHeader.get(4), europa);
     }
 
 }

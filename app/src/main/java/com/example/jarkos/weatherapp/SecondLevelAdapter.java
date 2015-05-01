@@ -1,5 +1,6 @@
 package com.example.jarkos.weatherapp;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,12 @@ import android.widget.LinearLayout.LayoutParams;
  */
 public class SecondLevelAdapter  extends BaseExpandableListAdapter
 {
+    private Context _context;
+    public SecondLevelAdapter(Context context)
+    {
+        this._context = context;
+    }
+
     @Override
     public Object getChild(int groupPosition, int childPosition)
     {
@@ -29,7 +36,7 @@ public class SecondLevelAdapter  extends BaseExpandableListAdapter
     public View getChildView(int groupPosition, int childPosition,
                              boolean isLastChild, View convertView, ViewGroup parent)
     {
-        TextView tv = new TextView(convertView.getContext());//TO CHECK!
+        TextView tv = new TextView(_context);//TO CHECK!
         tv.setText("child");
         tv.setPadding(15, 5, 5, 5);
         tv.setBackgroundColor(Color.YELLOW);
@@ -65,7 +72,7 @@ public class SecondLevelAdapter  extends BaseExpandableListAdapter
     public View getGroupView(int groupPosition, boolean isExpanded,
                              View convertView, ViewGroup parent)
     {
-        TextView tv = new TextView(convertView.getContext());//TO CHECK!
+        TextView tv = new TextView(_context);//TO CHECK!
         tv.setText("-->Second Level");
         tv.setPadding(12, 7, 7, 7);
         tv.setBackgroundColor(Color.RED);
