@@ -48,7 +48,7 @@ public class SecondLevelAdapter  extends BaseExpandableListAdapter
         System.out.println("Group: " + groupPosition + " child: " + cityID );
         tv.setText(_countryList.get(groupPosition).getListOfCities().get(cityID));
         tv.setPadding(35, 5, 5, 5);
-        tv.setBackgroundColor(Color.YELLOW);
+        tv.setTypeface(null, Typeface.BOLD);
         tv.setLayoutParams(new ListView.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT));
         return tv;
     }

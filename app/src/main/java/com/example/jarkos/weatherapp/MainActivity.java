@@ -22,7 +22,7 @@ public class MainActivity extends ActionBarActivity implements IFragmentContaine
     public void replaceFragment(android.app.Fragment fragment) {
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction frt = fragmentManager.beginTransaction();
-        frt.replace(R.id.container, fragment, null);
+        frt.replace(R.id.containerMenu, fragment, null);
         frt.addToBackStack(null);
         frt.commit();
     }
