@@ -47,7 +47,7 @@ public class SecondLevelAdapter  extends BaseExpandableListAdapter
         TextView tv = new TextView(_context);//TO CHECK!
         System.out.println("Group: " + groupPosition + " child: " + cityID );
         tv.setText(_countryList.get(groupPosition).getListOfCities().get(cityID));
-        tv.setPadding(25, 5, 5, 5);
+        tv.setPadding(35, 5, 5, 5);
         tv.setBackgroundColor(Color.YELLOW);
         tv.setLayoutParams(new ListView.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT));
         return tv;
@@ -92,7 +92,7 @@ public class SecondLevelAdapter  extends BaseExpandableListAdapter
         TextView continentsList = (TextView) convertView.findViewById(R.id.lblListItem);
         continentsList.setText(_countryList.get(countryID).getName());
         continentsList.setTypeface(null, Typeface.BOLD);
-        continentsList.setPadding(10, 7, 7, 7);
+        continentsList.setPadding(25, 7, 400, 7);
 
         return continentsList;
     }
