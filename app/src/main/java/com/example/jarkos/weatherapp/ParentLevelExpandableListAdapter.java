@@ -42,7 +42,7 @@ public class ParentLevelExpandableListAdapter extends BaseExpandableListAdapter
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent)
     {
         System.out.println("Tworzymy seconda");
-        CustomExpandableListView SecondLevelExpandableList = new CustomExpandableListView(_context); //TO CHECK2
+        SecondLevelExpandableList SecondLevelExpandableList = new SecondLevelExpandableList(_context); //TO CHECK2
         SecondLevelExpandableList.setAdapter(new SecondLevelAdapter(_context,_continentsList.get(groupPosition).listOfCountries)); //wysyłąmy tylko jeden dany kontynent
         SecondLevelExpandableList.setGroupIndicator(null);
         return SecondLevelExpandableList;
