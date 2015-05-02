@@ -63,9 +63,21 @@ public class MenuFragment extends Fragment {
     {
 
         Continent asia = new Continent("Asia");
+
         Country china = new Country("China");
-        Country japan = new Country("Japan");
+        ArrayList<String> chinaCities = new ArrayList<String>();
+        chinaCities.add("Pekin");
+        chinaCities.add("Honkong");
+        chinaCities.add("Szanghaj");
+        china.setListOfCities(chinaCities);
         asia.listOfCountries.add(china);
+
+        Country japan = new Country("Japan");
+        ArrayList<String> japanCities = new ArrayList<String>();
+        japanCities.add("Tokio");
+        japanCities.add("Jokohama");
+        japanCities.add("Osaka");
+        japan.setListOfCities(japanCities);
         asia.listOfCountries.add(japan);
 
         // Adding child data
@@ -73,15 +85,32 @@ public class MenuFragment extends Fragment {
         _continentList.add(asia);
 
         Continent europa = new Continent("Europa");
+
         Country germany = new Country("Germany");
+        ArrayList<String> germanCities = new ArrayList<String>();
+        germanCities.add("Berlin");
+        germanCities.add("Monachium");
+        germanCities.add("Hamburg");
+        germany.setListOfCities(germanCities);
+
         Country france = new Country("Francja");
+        ArrayList<String> frenchCities = new ArrayList<String>();
+        frenchCities.add("Paryż");
+        frenchCities.add("Lyon");
+        frenchCities.add("Marsylia");
+        france.setListOfCities(frenchCities);
+
         Country poland = new Country("Poland");
+        ArrayList<String> polishCities = new ArrayList<String>();
+        polishCities.add("Warszawa");
+        polishCities.add("Kraków");
+        polishCities.add("Łódź");
+        poland.setListOfCities(polishCities);
+
         europa.listOfCountries.add(germany);
         europa.listOfCountries.add(poland);
         europa.listOfCountries.add(france);
         _continentList.add(europa);
-
-        ArrayList<String> africa = new ArrayList<String>();
 
         ArrayList<String> northAmerica = new ArrayList<String>();
 

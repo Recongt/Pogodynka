@@ -8,15 +8,24 @@ import java.util.List;
  */
 public class Country
 {
-    public String getName() {
-        return name;
+    private String name;
+
+    public void setListOfCities(ArrayList<String> listOfCities) {
+        this.listOfCities = listOfCities;
     }
 
-    private String name;
     private ArrayList<String> listOfCities;
 
     public Country(String name) {
         this.name = name;
         this.listOfCities = new ArrayList<String>();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public ArrayList<String> getListOfCities() {
+        return listOfCities;
     }
 }

@@ -43,9 +43,11 @@ public class SecondLevelAdapter  extends BaseExpandableListAdapter
     public View getChildView(int groupPosition, int childPosition,
                              boolean isLastChild, View convertView, ViewGroup parent)
     {
+        Integer cityID = (Integer) getChild(groupPosition, childPosition);
         TextView tv = new TextView(_context);//TO CHECK!
-        tv.setText("child");
-        tv.setPadding(15, 5, 5, 5);
+        System.out.println("Group: " + groupPosition + " child: " + cityID );
+        tv.setText(_countryList.get(groupPosition).getListOfCities().get(cityID));
+        tv.setPadding(25, 5, 5, 5);
         tv.setBackgroundColor(Color.YELLOW);
         tv.setLayoutParams(new ListView.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT));
         return tv;
@@ -54,7 +56,7 @@ public class SecondLevelAdapter  extends BaseExpandableListAdapter
     @Override
     public int getChildrenCount(int groupPosition)
     {
-        return 5;
+        return _countryList.get(groupPosition).getListOfCities().size();
     }
 
     @Override
@@ -92,11 +94,6 @@ public class SecondLevelAdapter  extends BaseExpandableListAdapter
         continentsList.setTypeface(null, Typeface.BOLD);
         continentsList.setPadding(10, 7, 7, 7);
 
-//        TextView tv = new TextView(_context);//TO CHECK!
-//        tv.setText("-->Second Level");
-//        tv.setPadding(12, 7, 7, 7);
-//        tv.setBackgroundColor(Color.RED);
-//
         return continentsList;
     }
 
