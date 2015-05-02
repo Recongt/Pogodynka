@@ -2,6 +2,8 @@ package com.example.jarkos.weatherapp;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Typeface;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
@@ -9,15 +11,20 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.LinearLayout.LayoutParams;
 
+import java.util.ArrayList;
+
 /**
  * Created by Jarek on 2015-05-01.
  */
 public class SecondLevelAdapter  extends BaseExpandableListAdapter
 {
     private Context _context;
-    public SecondLevelAdapter(Context context)
+    private ArrayList<Country> _countryList;
+
+    public SecondLevelAdapter(Context context, ArrayList<Country> continent)
     {
         this._context = context;
+        this._countryList = continent;
     }
 
     @Override
@@ -59,7 +66,8 @@ public class SecondLevelAdapter  extends BaseExpandableListAdapter
     @Override
     public int getGroupCount()
     {
-        return 1;
+        System.out.println(_countryList.size());
+        return _countryList.size();
     }
 
     @Override
@@ -72,12 +80,24 @@ public class SecondLevelAdapter  extends BaseExpandableListAdapter
     public View getGroupView(int groupPosition, boolean isExpanded,
                              View convertView, ViewGroup parent)
     {
-        TextView tv = new TextView(_context);//TO CHECK!
-        tv.setText("-->Second Level");
-        tv.setPadding(12, 7, 7, 7);
-        tv.setBackgroundColor(Color.RED);
+        Integer countryID = (Integer) getGroup(groupPosition);
+        if (convertView == null) {
+            LayoutInflater infalInflater = (LayoutInflater) this._context
+                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            convertView = infalInflater.inflate(R.layout.list_item, null);
+        }
+        System.out.println("Pozycja isExpand: " +isExpanded);
+        TextView continentsList = (TextView) convertView.findViewById(R.id.lblListItem);
+        continentsList.setText(_countryList.get(countryID).getName());
+        continentsList.setTypeface(null, Typeface.BOLD);
+        continentsList.setPadding(10, 7, 7, 7);
 
-        return tv;
+//        TextView tv = new TextView(_context);//TO CHECK!
+//        tv.setText("-->Second Level");
+//        tv.setPadding(12, 7, 7, 7);
+//        tv.setBackgroundColor(Color.RED);
+//
+        return continentsList;
     }
 
     @Override

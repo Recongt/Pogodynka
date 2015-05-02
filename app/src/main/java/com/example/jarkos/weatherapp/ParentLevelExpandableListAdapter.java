@@ -2,10 +2,15 @@ package com.example.jarkos.weatherapp;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Typeface;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Jarek on 2015-05-01.
@@ -13,9 +18,12 @@ import android.widget.TextView;
 public class ParentLevelExpandableListAdapter extends BaseExpandableListAdapter
 {
     private Context _context;
-    ParentLevelExpandableListAdapter(Context context)
+    private ArrayList<Continent> _continentsList;
+
+    ParentLevelExpandableListAdapter(Context context, ArrayList<Continent> continentsList)
     {
         this._context = context;
+        this._continentsList = continentsList;
     }
 
     @Override
@@ -31,11 +39,11 @@ public class ParentLevelExpandableListAdapter extends BaseExpandableListAdapter
     }
 
     @Override
-    public View getChildView(int groupPosition, int childPosition,
-                             boolean isLastChild, View convertView, ViewGroup parent)
+    public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent)
     {
-        CustomExpandableListview SecondLevelExpandableList = new CustomExpandableListview(_context); //TO CHECK2
-        SecondLevelExpandableList.setAdapter(new SecondLevelAdapter(_context));
+        System.out.println("Tworzymy seconda");
+        CustomExpandableListView SecondLevelExpandableList = new CustomExpandableListView(_context); //TO CHECK2
+        SecondLevelExpandableList.setAdapter(new SecondLevelAdapter(_context,_continentsList.get(groupPosition).listOfCountries)); //wysyłąmy tylko jeden dany kontynent
         SecondLevelExpandableList.setGroupIndicator(null);
         return SecondLevelExpandableList;
     }
@@ -43,7 +51,7 @@ public class ParentLevelExpandableListAdapter extends BaseExpandableListAdapter
     @Override
     public int getChildrenCount(int groupPosition)
     {
-        return 3;
+        return 1;
     }
 
     @Override
@@ -55,7 +63,7 @@ public class ParentLevelExpandableListAdapter extends BaseExpandableListAdapter
     @Override
     public int getGroupCount()
     {
-        return 4;
+        return _continentsList.size();
     }
 
     @Override
@@ -68,12 +76,22 @@ public class ParentLevelExpandableListAdapter extends BaseExpandableListAdapter
     public View getGroupView(int groupPosition, boolean isExpanded,
                              View convertView, ViewGroup parent)
     {
-        TextView tv = new TextView(_context); // TO CHECK2!!!
-        tv.setText("->FirstLevel");
-        tv.setBackgroundColor(Color.BLUE);
-        tv.setPadding(10, 7, 7, 7);
 
-        return tv;
+//        TextView lblListHeader = (TextView) convertView.findViewById(R.id.lblListHeader);
+//        lblListHeader.setTypeface(null, Typeface.BOLD);
+//        lblListHeader.setText(countryName);
+        if (convertView == null) {
+            LayoutInflater infalInflater = (LayoutInflater) this._context
+                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            convertView = infalInflater.inflate(R.layout.list_group, null);
+        }
+//        System.out.println("Pozycja isExpand: " +isExpanded);
+        TextView continentsList = (TextView) convertView.findViewById(R.id.lblListHeader);
+        continentsList.setText(_continentsList.get(groupPosition).getName());
+        continentsList.setTypeface(null, Typeface.BOLD);
+        continentsList.setPadding(10, 7, 7, 7);
+
+        return continentsList;
     }
 
     @Override
