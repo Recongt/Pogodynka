@@ -1,12 +1,13 @@
 package com.example.jarkos.weatherapp;
 
 import android.app.Activity;
-import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
 
 
 public class WeatherViewFragment extends Fragment {
@@ -29,4 +30,18 @@ public class WeatherViewFragment extends Fragment {
 
         return view;
     }
+
+    public void updateFragmentView(String cityName)
+    {
+         //Ogar frgm create
+//        TextView article = (TextView) getActivity().findViewById(R.id.article);
+        if(WeatherViewFragment.this.isVisible())
+        {
+            TextView wetherLabel = (TextView) getActivity().findViewById(R.id.labelWet);
+            wetherLabel.setText(cityName);
+        }
+
+        System.out.print("Zaktualizowano!");
+    }
+
 }

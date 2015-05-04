@@ -22,8 +22,6 @@ public class MenuFragment extends Fragment {
     private ParentLevelExpandableListAdapter listAdapter;
     private ExpandableListView _expListView;
     private ArrayList<Continent> _continentList;
-    private ArrayList<ArrayList<String>> europaCountryList;
-    private HashMap<Integer, ArrayList<String>> hashContinentListData;
     private View view;
 
     public MenuFragment()
