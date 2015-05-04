@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
@@ -41,12 +42,27 @@ public class SecondLevelAdapter  extends BaseExpandableListAdapter
 
     @Override
     public View getChildView(int groupPosition, int childPosition,
-                             boolean isLastChild, View convertView, ViewGroup parent)
+                             boolean isLastChild, final View convertView, ViewGroup parent)
     {
         Integer cityID = (Integer) getChild(groupPosition, childPosition);
         TextView tv = new TextView(_context);//TO CHECK!
-        System.out.println("Group: " + groupPosition + " child: " + cityID );
-        tv.setText(_countryList.get(groupPosition).getListOfCities().get(cityID));
+//        System.out.println("Group: " + groupPosition + " child: " + cityID );
+        final String cityName = _countryList.get(groupPosition).getListOfCities().get(cityID);
+        tv.setText(cityName);
+
+        tv.setOnTouchListener(new View.OnTouchListener()
+        {
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event)
+            {
+                if(_context instanceof MainActivity){
+                    ((MainActivity)_context).onCitySelected(cityName);
+                }
+                return false;
+            }
+        });
+
         tv.setPadding(35, 5, 5, 5);
         tv.setTypeface(null, Typeface.BOLD);
         tv.setLayoutParams(new ListView.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT));
@@ -88,7 +104,7 @@ public class SecondLevelAdapter  extends BaseExpandableListAdapter
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = infalInflater.inflate(R.layout.list_item, null);
         }
-        System.out.println("Pozycja isExpand: " +isExpanded);
+//        System.out.println("Pozycja isExpand: " +isExpanded);
         TextView continentsList = (TextView) convertView.findViewById(R.id.lblListItem);
         continentsList.setText(_countryList.get(countryID).getName());
         continentsList.setTypeface(null, Typeface.BOLD);

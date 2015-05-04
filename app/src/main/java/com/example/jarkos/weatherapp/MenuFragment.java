@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,7 +24,7 @@ public class MenuFragment extends Fragment {
     private ArrayList<Continent> _continentList;
     private ArrayList<ArrayList<String>> europaCountryList;
     private HashMap<Integer, ArrayList<String>> hashContinentListData;
-
+    private View view;
 
     public MenuFragment()
     {}
@@ -37,24 +38,43 @@ public class MenuFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,  Bundle savedInstanceState)
     {
-        View view = inflater.inflate(R.layout.fragment_menu,container,false);
+        view = inflater.inflate(R.layout.fragment_menu,container,false);
         _expListView = (ExpandableListView) view.findViewById(R.id.expanadableListView);
 
         loadListData();
 
         listAdapter = new ParentLevelExpandableListAdapter(view.getContext(), _continentList);
-
         _expListView.setAdapter(listAdapter);
 
-        // Listview group clickListener
         _expListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
 
             @Override
             public boolean onGroupClick(ExpandableListView parent, View v,
                                         int groupPosition, long id) {
+                Toast.makeText(view.getContext(),
+                "Group Clicked " + _continentList.get(groupPosition).getName(),
+                Toast.LENGTH_SHORT).show();
                 return false;
             }
         });
+
+        _expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+
+            @Override
+            public boolean onChildClick(ExpandableListView parent, View v,
+                                        int groupPosition, int childPosition, long id) {
+                // TODO Auto-generated method stub
+                System.out.print("Clicked!!");
+                Toast.makeText(
+                        view.getContext(),
+                        _continentList.get(groupPosition).getName()
+                                + " : "
+                               , Toast.LENGTH_SHORT)
+                        .show();
+                return false;
+            }
+        });
+
 
         return view;
     }
@@ -66,16 +86,16 @@ public class MenuFragment extends Fragment {
 
         Country china = new Country("China");
         ArrayList<String> chinaCities = new ArrayList<String>();
-        chinaCities.add("Pekin");
-        chinaCities.add("Honkong");
-        chinaCities.add("Szanghaj");
+        chinaCities.add("Beijing");
+        chinaCities.add("Hongkong");
+        chinaCities.add("Shanghai");
         china.setListOfCities(chinaCities);
         asia.listOfCountries.add(china);
 
         Country japan = new Country("Japan");
         ArrayList<String> japanCities = new ArrayList<String>();
         japanCities.add("Tokio");
-        japanCities.add("Jokohama");
+        japanCities.add("Nagoya");
         japanCities.add("Osaka");
         japan.setListOfCities(japanCities);
         asia.listOfCountries.add(japan);
@@ -89,30 +109,28 @@ public class MenuFragment extends Fragment {
         Country germany = new Country("Germany");
         ArrayList<String> germanCities = new ArrayList<String>();
         germanCities.add("Berlin");
-        germanCities.add("Monachium");
+        germanCities.add("Munchen");
         germanCities.add("Hamburg");
         germany.setListOfCities(germanCities);
 
         Country france = new Country("Francja");
         ArrayList<String> frenchCities = new ArrayList<String>();
-        frenchCities.add("Paryż");
+        frenchCities.add("Paris");
         frenchCities.add("Lyon");
-        frenchCities.add("Marsylia");
+        frenchCities.add("Marseille");
         france.setListOfCities(frenchCities);
 
         Country poland = new Country("Poland");
         ArrayList<String> polishCities = new ArrayList<String>();
-        polishCities.add("Warszawa");
-        polishCities.add("Kraków");
-        polishCities.add("Łódź");
+        polishCities.add("Warsaw");
+        polishCities.add("Krakow");
+        polishCities.add("Lodz");
         poland.setListOfCities(polishCities);
 
         europa.listOfCountries.add(germany);
         europa.listOfCountries.add(poland);
         europa.listOfCountries.add(france);
         _continentList.add(europa);
-
-        ArrayList<String> northAmerica = new ArrayList<String>();
 
     }
 
