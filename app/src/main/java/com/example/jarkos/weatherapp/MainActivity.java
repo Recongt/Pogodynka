@@ -54,14 +54,12 @@ public class MainActivity extends ActionBarActivity implements IFragmentContaine
     public void onCitySelected(String cityName)
     {
         // The user selected the headline of an article from the HeadlinesFragment
-
         // Capture the article fragment from the activity layout
 
         WeatherViewFragment weatherFragment = (WeatherViewFragment) getFragmentManager().findFragmentById(R.id.containerWeather);
 
         if (weatherFragment != null) {
             // If article frag is available, we're in two-pane layout...
-
             // Call a method in the ArticleFragment to update its content
             weatherFragment.updateFragmentView(cityName);
 

@@ -1,14 +1,19 @@
 package com.example.jarkos.weatherapp;
 
 import android.app.Activity;
-import android.os.Bundle;
 import android.app.Fragment;
+import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;
 
+import java.io.IOException;
 
 public class WeatherViewFragment extends Fragment {
 
@@ -33,15 +38,28 @@ public class WeatherViewFragment extends Fragment {
 
     public void updateFragmentView(String cityName)
     {
-         //Ogar frgm create
-//        TextView article = (TextView) getActivity().findViewById(R.id.article);
+
         if(WeatherViewFragment.this.isVisible())
         {
-            TextView wetherLabel = (TextView) getActivity().findViewById(R.id.labelWet);
-            wetherLabel.setText(cityName);
+            TextView weatherLabel = (TextView) getActivity().findViewById(R.id.labelWet);
+            weatherLabel.setText(cityName);
+
+            String url = "http://api.openweathermap.org/data/2.5/weather?q="+cityName;
+
+            JSONParser jsonParser = new JSONParser();
+            if (android.os.Build.VERSION.SDK_INT > 9)
+            {
+                StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+                StrictMode.setThreadPolicy(policy);
+            }
+            String respond =  jsonParser.doInBackground(url);
+            System.out.println(respond);
+            weatherLabel.setText(respond);
         }
 
         System.out.print("Zaktualizowano!");
     }
+
+
 
 }
