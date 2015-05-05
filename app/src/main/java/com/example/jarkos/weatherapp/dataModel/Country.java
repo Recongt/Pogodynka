@@ -1,4 +1,4 @@
-package com.example.jarkos.weatherapp;
+package com.example.jarkos.weatherapp.dataModel;
 
 import java.util.ArrayList;
 import java.util.List;

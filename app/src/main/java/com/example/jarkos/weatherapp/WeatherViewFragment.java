@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
@@ -53,6 +54,9 @@ public class WeatherViewFragment extends Fragment {
                 StrictMode.setThreadPolicy(policy);
             }
             String respond =  jsonParser.doInBackground(url);
+            Gson gson = new Gson();
+           // WeatherData weatherData = gson.fromJson(respond, WeatherData.class);
+            //System.out.println("GŁOWNE: " + weatherData.main);
             System.out.println(respond);
             weatherLabel.setText(respond);
         }

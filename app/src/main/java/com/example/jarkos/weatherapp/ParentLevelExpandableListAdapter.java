@@ -1,7 +1,6 @@
 package com.example.jarkos.weatherapp;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,8 +8,9 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 
+import com.example.jarkos.weatherapp.dataModel.Continent;
+
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Jarek on 2015-05-01.

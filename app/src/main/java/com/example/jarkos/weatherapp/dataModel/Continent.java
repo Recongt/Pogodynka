@@ -1,4 +1,4 @@
-package com.example.jarkos.weatherapp;
+package com.example.jarkos.weatherapp.dataModel;
 
 import java.util.ArrayList;
 
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class Continent
 {
     private String name;
-    ArrayList<Country> listOfCountries;
+    public ArrayList<Country> listOfCountries;
 
     public Continent(String name)
     {
