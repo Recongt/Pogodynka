@@ -46,34 +46,35 @@ public class MenuFragment extends Fragment {
         listAdapter = new ParentLevelExpandableListAdapter(view.getContext(), _continentList);
         _expListView.setAdapter(listAdapter);
 
-        _expListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
+//        _expListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
+//
+//            @Override
+//            public boolean onGroupClick(ExpandableListView parent, View v,
+//                                        int groupPosition, long id) {
+//                Toast.makeText(view.getContext(),
+//                "Group Clicked " + _continentList.get(groupPosition).getName(),
+//                Toast.LENGTH_SHORT).show();
+//                return false;
+//            }
+//        });
 
-            @Override
-            public boolean onGroupClick(ExpandableListView parent, View v,
-                                        int groupPosition, long id) {
-                Toast.makeText(view.getContext(),
-                "Group Clicked " + _continentList.get(groupPosition).getName(),
-                Toast.LENGTH_SHORT).show();
-                return false;
-            }
-        });
-
-        _expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
-
-            @Override
-            public boolean onChildClick(ExpandableListView parent, View v,
-                                        int groupPosition, int childPosition, long id) {
-                // TODO Auto-generated method stub
-                System.out.print("Clicked!!");
-                Toast.makeText(
-                        view.getContext(),
-                        _continentList.get(groupPosition).getName()
-                                + " : "
-                               , Toast.LENGTH_SHORT)
-                        .show();
-                return false;
-            }
-        });
+//        NIE DZIALA
+//        _expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+//
+//            @Override
+//            public boolean onChildClick(ExpandableListView parent, View v,
+//                                        int groupPosition, int childPosition, long id) {
+//                // TODO Auto-generated method stub
+//                System.out.print("Clicked!!");
+//                Toast.makeText(
+//                        view.getContext(),
+//                        _continentList.get(groupPosition).getName()
+//                                + " : "
+//                               , Toast.LENGTH_SHORT)
+//                        .show();
+//                return false;
+//            }
+//        });
 
 
         return view;

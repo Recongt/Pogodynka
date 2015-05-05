@@ -2,13 +2,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ff32ff00"
+    android:background="#cb020502"
+    android:layout_gravity="center"
     tools:context="com.example.jarkos.weatherapp.WeatherViewFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView android:layout_width="match_parent"
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center"
+        android:src=""/>
+
+
+    <TextView
+        android:gravity="center"
         android:id="@+id/labelWet"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:text="Select city for list"
+        android:textStyle="bold"
+        android:textColor="#ffff6900"
+        />
 
 </FrameLayout>

@@ -4,8 +4,7 @@
     android:layout_width="fill_parent"
     android:layout_height="match_parent"
     tools:context="com.example.jarkos.weatherapp.MainActivity"
-    tools:ignore="MergeRootFrame"
-    android:background="#ffd9ff00">
+    tools:ignore="MergeRootFrame">
 
     <fragment android:name="com.example.jarkos.weatherapp.MenuFragment"
         android:id="@+id/containerMenu"
@@ -17,8 +16,8 @@
     <fragment android:name="com.example.jarkos.weatherapp.WeatherViewFragment"
         android:id="@+id/containerWeather"
         android:layout_weight="1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"/>
 
 </LinearLayout>
 
