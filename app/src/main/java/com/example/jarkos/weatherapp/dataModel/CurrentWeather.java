@@ -1,5 +1,7 @@
 package com.example.jarkos.weatherapp.dataModel;
 
+import java.util.List;
+
 /**
  * Created by Jarek on 2015-05-05.
  */
@@ -12,9 +14,12 @@ public class CurrentWeather
 
     public Coordinates coord;
     public Main main;
-    public System sys;
+    public Sys sys;
     public Wind wind;
     public Clouds clouds;
-    public Weather[] weather;
+    public List<Weather> weather;
 
+    public Sys getSys() {
+        return sys;
+    }
 }

@@ -10,16 +10,24 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.jarkos.weatherapp.dataModel.CurrentWeather;
+import com.example.jarkos.weatherapp.dataModel.Main;
+import com.example.jarkos.weatherapp.dataModel.Sys;
+import com.example.jarkos.weatherapp.dataModel.Weather;
 import com.google.gson.Gson;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.List;
 
 public class WeatherViewFragment extends Fragment {
 
     private IFragmentContainer fragmentContainer;
+    public static final Calendar c = Calendar.getInstance();
+    public static final SimpleDateFormat DATE_FORMATTER = new SimpleDateFormat("HH:mm");
 
     public WeatherViewFragment() {
         // Required empty public constructor
@@ -59,7 +67,30 @@ public class WeatherViewFragment extends Fragment {
             CurrentWeather currentWeather = gson.fromJson(respond, CurrentWeather.class);
             System.out.println("GŁOWNE: " + currentWeather.main.getHumidity());
             System.out.println(respond);
-            weatherLabel.setText(respond);
+            //weatherLabel.setText(respond);
+            String weatherString="";
+
+            if (currentWeather != null)
+            {
+                System.out.println("City : " + cityName);
+                List<Weather> weathers = currentWeather.weather;
+                Weather weather = weathers.get(0);
+                weatherString += "\n" + weather.getDescription();
+                System.out.println("Condition : " + weather.getDescription());
+
+                Main main = currentWeather.main;
+                System.out.println("Temperature : " + (int) (main.getTemp() - 273.15) + "°C");
+                weatherString += "\nTemperature : " + (int) (main.getTemp() - 273.15) + "°C";
+
+                com.example.jarkos.weatherapp.dataModel.Sys sys = currentWeather.sys;
+                c.setTimeInMillis(sys.getSunrise() * 1000);
+                System.out.println("Sunrise : " + DATE_FORMATTER.format(c.getTime()));
+                c.setTimeInMillis(sys.getSunset() * 1000);
+                weatherString += "\nSunrise : " + DATE_FORMATTER.format(c.getTime());
+                System.out.println("Sunset : " + DATE_FORMATTER.format(c.getTime()));
+                weatherString += "\nSunset : " + DATE_FORMATTER.format(c.getTime());
+                weatherLabel.setText(weatherString);
+            }
         }
 
         System.out.print("Zaktualizowano!");
