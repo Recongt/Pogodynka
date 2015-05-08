@@ -41,8 +41,6 @@ public class ParentLevelExpandableListAdapter extends BaseExpandableListAdapter
     @Override
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent)
     {
-        System.out.println("Tworzymy seconda");
-
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) this._context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);

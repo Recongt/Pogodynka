@@ -85,7 +85,7 @@ public class SecondLevelAdapter  extends BaseExpandableListAdapter
     @Override
     public int getGroupCount()
     {
-        System.out.println(_countryList.size());
+        //System.out.println(_countryList.size());
         return _countryList.size();
     }
 

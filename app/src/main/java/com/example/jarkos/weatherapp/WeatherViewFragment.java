@@ -7,9 +7,11 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,36 +19,65 @@ import com.example.jarkos.weatherapp.dataModel.CurrentWeather;
 import com.example.jarkos.weatherapp.dataModel.Main;
 import com.example.jarkos.weatherapp.dataModel.Weather;
 import com.google.gson.Gson;
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 public class WeatherViewFragment extends Fragment {
 
-    private IFragmentContainer fragmentContainer;
+//    private IFragmentContainer fragmentContainer;
     private Context _context;
+    FragmentActivity listener;
+    TextView weatherLabel;
+    String _cityName=null;
+    View _view;
+    ImageView imgView;
+    private Bundle savedInstanceState;
 
+    public WeatherViewFragment(String cityname)
+    {
+        this._cityName = cityname;
+    }
     public WeatherViewFragment()
     {
+        this._cityName=null;
     }
 
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        fragmentContainer = (IFragmentContainer) activity;
+        this.listener = (FragmentActivity) activity;
+//        fragmentContainer = (IFragmentContainer) activity;
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_weather_view, container, false);
-        _context = view.getContext();
-        return view;
+        _view = inflater.inflate(R.layout.fragment_weather_view, container, false);
+        _context = _view.getContext();
+        weatherLabel = (TextView) _view.findViewById(R.id.labelWet);
+        ImageView imgView = (ImageView)_view.findViewById(R.id.icon);
+        weatherLabel.setText("Wait...");
+//        weatherLabel.setText("Wybierz miasto " + _cityName);
+        if(_cityName==null)
+        {
+            weatherLabel.setText("Select city...");
+        }
+        else
+        {
+            updateFragmentView(_cityName);
+        }
+        return _view;
     }
 
     public void updateFragmentView(String cityName)
     {
-
-        if(WeatherViewFragment.this.isVisible())
-        {
-            TextView weatherLabel = (TextView) getActivity().findViewById(R.id.labelWet);
+            weatherLabel = (TextView) _view.findViewById(R.id.labelWet);
+            ImageView imgView = (ImageView)_view.findViewById(R.id.icon);
             weatherLabel.setText(cityName);
 
             String url = "http://api.openweathermap.org/data/2.5/weather?q="+cityName;
@@ -64,17 +95,33 @@ public class WeatherViewFragment extends Fragment {
             {
                 String respond =  jsonParser.doInBackground(url);
                 Gson gson = new Gson();
-                CurrentWeather currentWeather = gson.fromJson(respond, CurrentWeather.class);
-                System.out.println(respond);
-                //weatherLabel.setText(respond);
-                String weatherString="";
+                CurrentWeather currentWeather = null;
+                try {
+                    currentWeather = gson.fromJson(respond, CurrentWeather.class);
+                }
+                catch(java.lang.IllegalStateException ise)
+                {
+                    System.out.print("Błąd parsowania JSONA12");
+                }
+                catch(com.google.gson.JsonSyntaxException ise)
+                {
+                    System.out.print("Błąd parsowania JSONA\n");
+                    weatherLabel.setText("Błąd parsowania JSONA. Spróbuj jeszcze raz!");
+                    System.out.print(respond+"\n");
+                }
 
                 if (currentWeather != null)
                 {
-                    System.out.println("City : " + cityName);
-                    weatherString += cityName;
+                    System.out.println(respond);
+                    //weatherLabel.setText(respond);
+                    String weatherString="";
+
                     List<Weather> weathers = currentWeather.weather;
                     Weather weather = weathers.get(0);
+                    Picasso.with(_context).load("http://openweathermap.org/img/w/"+weather.getIcon()+".png").into(imgView);
+                    System.out.println("City : " + cityName);
+                    weatherString += cityName;
+
                     weatherString += "\n" + weather.getDescription();
                     System.out.println("Condition : " + weather.getDescription());
 
@@ -96,9 +143,6 @@ public class WeatherViewFragment extends Fragment {
                 weatherLabel.setText("Connection problem.");
                 Toast.makeText(_context, "Connection problem.", Toast.LENGTH_SHORT).show();
             }
-
-
-        }
     }
 
     private boolean haveNetworkConnection()
