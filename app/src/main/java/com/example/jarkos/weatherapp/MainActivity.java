@@ -2,12 +2,9 @@ package com.example.jarkos.weatherapp;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.res.Configuration;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ExpandableListView;
-import android.widget.Toast;
-
 
 public class MainActivity extends ActionBarActivity implements IFragmentContainer
 {
@@ -18,18 +15,24 @@ public class MainActivity extends ActionBarActivity implements IFragmentContaine
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if (findViewById(R.id.containerFragment) != null) {
-
-            if (savedInstanceState != null) {
-                return;
-            }
-
-//            MenuFragment firstFragment = new MenuFragment();
-//            firstFragment.setArguments(getIntent().getExtras());
+        if (findViewById(R.id.containerFragment) != null)
+        {
+            setContentView(R.layout.activity_main);
+            MenuFragment firstFragment = new MenuFragment();
+            firstFragment.setArguments(getIntent().getExtras());
 //            getSupportFragmentManager().beginTransaction().add(R.id.containerFragment, firstFragment).commit();
-            replaceFragment(new MenuFragment());
+            replaceFragment(firstFragment);
         }
+//        if (findViewById(R.id.containerWeather) != null && findViewById(R.id.containerMenu)!=null)
+        if (findViewById(R.id.containerWeather) != null)
+        {
+            setContentView(R.layout.activity_main_land);
+            MenuFragment mf = new MenuFragment();
+            replaceFragment3(mf);
+            WeatherViewFragment wvf = new WeatherViewFragment();
+            replaceFragment2(wvf);
 
+        }
     }
 
     @Override
@@ -41,35 +44,84 @@ public class MainActivity extends ActionBarActivity implements IFragmentContaine
         frt.commit();
     }
 
-    @Override
-    public void onBackPressed(){
+    public void replaceFragment2(android.app.Fragment fragment) {
         FragmentManager fragmentManager = getFragmentManager();
-        if (fragmentManager.getBackStackEntryCount() > 1) {
+        FragmentTransaction frt = fragmentManager.beginTransaction();
+        frt.replace(R.id.containerWeather, fragment, null);
+        frt.addToBackStack(null);
+        frt.commit();
+    }
+//
+    public void replaceFragment3 (android.app.Fragment fragment) {
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction frt = fragmentManager.beginTransaction();
+        frt.replace(R.id.containerMenu, fragment, null);
+        frt.addToBackStack(null);
+        frt.commit();
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        FragmentManager fragmentManager = getFragmentManager();
+        if (fragmentManager.getBackStackEntryCount() > 1 && getResources().getConfiguration().orientation==Configuration.ORIENTATION_PORTRAIT )
+        {
             fragmentManager.popBackStack();
-        } else {
+        }
+        else
+        {
             finish();
         }
     }
 
-    public void onCitySelected(String cityName)
+    @Override
+    public void onConfigurationChanged(Configuration newConfig)
     {
-        // The user selected the headline of an article from the HeadlinesFragment
-        // Capture the article fragment from the activity layout
+        super.onConfigurationChanged(newConfig);
+//        setContentView(R.layout.activity_main);
+        FragmentManager fragmentManager = getFragmentManager();
+            if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
+            {
+                fragmentManager = getFragmentManager();
+                fragmentManager.popBackStack();
+                fragmentManager.popBackStack();
+                System.out.println("PORT\n");
+                setContentView(R.layout.activity_main);
 
+                MenuFragment firstFragment = new MenuFragment();
+                firstFragment.setArguments(getIntent().getExtras());
+                replaceFragment(firstFragment);
+            }
+            else
+            {
+                System.out.println("LAND\n");
+                fragmentManager.popBackStack();
+                setContentView(R.layout.activity_main_land);
+
+                MenuFragment mf = new MenuFragment();
+                replaceFragment3(mf);
+                WeatherViewFragment wvf = new WeatherViewFragment();
+                replaceFragment2(wvf);
+
+            }
+    }
+
+    public void onCitySelected(final String cityName)
+    {
         WeatherViewFragment weatherFragment = (WeatherViewFragment) getFragmentManager().findFragmentById(R.id.containerWeather);
 
-        if (weatherFragment != null) {
-            // If article frag is available, we're in two-pane layout...
-            // Call a method in the ArticleFragment to update its content
-            weatherFragment.updateFragmentView(cityName);
-
+        if (weatherFragment == null)
+        {
+            System.out.println("1!\n");
+            // If the frag is not available, we're in the one-pane layout and we  must swap frags...
+            WeatherViewFragment wvf = new WeatherViewFragment(cityName);
+            replaceFragment(wvf);
         }
         else
         {
-            // If the frag is not available, we're in the one-pane layout and must swap frags...
-            WeatherViewFragment newWeatherFragment = new WeatherViewFragment();
-            replaceFragment(newWeatherFragment);
-            newWeatherFragment.updateFragmentView(cityName);
-         }
+            System.out.println("2!\n");
+            weatherFragment.updateFragmentView(cityName);
+        }
     }
+
 }

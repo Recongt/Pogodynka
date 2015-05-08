@@ -114,7 +114,7 @@ public class MenuFragment extends Fragment {
         germanCities.add("Hamburg");
         germany.setListOfCities(germanCities);
 
-        Country france = new Country("Francja");
+        Country france = new Country("France");
         ArrayList<String> frenchCities = new ArrayList<String>();
         frenchCities.add("Paris");
         frenchCities.add("Lyon");
