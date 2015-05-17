@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\Adam\Desktop\Weatherapp\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="C:\Users\Adam\Desktop\Weatherapp\app\build\intermediates\pre-dexed\debug\classes-27474feb7d3dc809f9039bcb6ff5d0191814f8c7.jar" />
+    </item>
+    <item
+        jar="C:\Users\Adam\Desktop\Weatherapp\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="C:\Users\Adam\Desktop\Weatherapp\app\build\intermediates\pre-dexed\debug\classes-2bda9a65dd2167b06673524c2c0cf948918ebbde.jar" />
+    </item>
+    <item
+        jar="C:\Users\Adam\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="C:\Users\Adam\Desktop\WeatherApp\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-b1c049e1d354b47e165bcad4856edd38cf5e599c.jar" />
+    </item>
+    <item
+        jar="C:\Users\Adam\Desktop\Weatherapp\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="C:\Users\Adam\Desktop\Weatherapp\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-0382b330652f379d83051a1ae0ee35c995d3c758.jar" />
+    </item>
+    <item
+        jar="C:\Users\Adam\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp\okhttp\2.3.0\2e7bc7033dc2c8423e661224171b3133fb155b28\okhttp-2.3.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2e7bc7033dc2c8423e661224171b3133fb155b28">
+        <dex dex="C:\Users\Adam\Desktop\WeatherApp\app\build\intermediates\pre-dexed\debug\okhttp-2.3.0-d36efd3abd5199ae0f43cac8e82674ed76a22993.jar" />
+    </item>
+    <item
+        jar="C:\Users\Adam\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.3.0\1b355f73402020c5a0dcca58affc3ec3dfeabac1\okio-1.3.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="1b355f73402020c5a0dcca58affc3ec3dfeabac1">
+        <dex dex="C:\Users\Adam\Desktop\WeatherApp\app\build\intermediates\pre-dexed\debug\okio-1.3.0-b0ba1df3d76f3fd7e2cc386b520b4c80b37e77a5.jar" />
+    </item>
+    <item
+        jar="C:\Users\Adam\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.2.4\a60a5e993c98c864010053cb901b7eab25306568\gson-2.2.4.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="a60a5e993c98c864010053cb901b7eab25306568">
+        <dex dex="C:\Users\Adam\Desktop\Weatherapp\app\build\intermediates\pre-dexed\debug\gson-2.2.4-f4a15206e054c442402450afb564f4fc3b186ede.jar" />
+    </item>
+    <item
+        jar="C:\Users\Adam\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.3.0\1b355f73402020c5a0dcca58affc3ec3dfeabac1\okio-1.3.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="1b355f73402020c5a0dcca58affc3ec3dfeabac1">
+        <dex dex="C:\Users\Adam\Desktop\Weatherapp\app\build\intermediates\pre-dexed\debug\okio-1.3.0-b0ba1df3d76f3fd7e2cc386b520b4c80b37e77a5.jar" />
+    </item>
+    <item
+        jar="C:\Users\Adam\.gradle\caches\modules-2\files-2.1\com.squareup.picasso\picasso\2.5.2\7446d06ec8d4f7ffcc53f1da37c95f200dcb9387\picasso-2.5.2.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
+        <dex dex="C:\Users\Adam\Desktop\Weatherapp\app\build\intermediates\pre-dexed\debug\picasso-2.5.2-0dcbbec284ef8f02941b565987f2de118d9d9abf.jar" />
+    </item>
+    <item
+        jar="C:\Users\Adam\.gradle\caches\modules-2\files-2.1\com.squareup.picasso\picasso\2.5.2\7446d06ec8d4f7ffcc53f1da37c95f200dcb9387\picasso-2.5.2.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
+        <dex dex="C:\Users\Adam\Desktop\WeatherApp\app\build\intermediates\pre-dexed\debug\picasso-2.5.2-0dcbbec284ef8f02941b565987f2de118d9d9abf.jar" />
+    </item>
+    <item
+        jar="C:\Users\Adam\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp\okhttp\2.3.0\2e7bc7033dc2c8423e661224171b3133fb155b28\okhttp-2.3.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="2e7bc7033dc2c8423e661224171b3133fb155b28">
+        <dex dex="C:\Users\Adam\Desktop\Weatherapp\app\build\intermediates\pre-dexed\debug\okhttp-2.3.0-d36efd3abd5199ae0f43cac8e82674ed76a22993.jar" />
+    </item>
+    <item
+        jar="C:\Users\Adam\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="C:\Users\Adam\Desktop\Weatherapp\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-b1c049e1d354b47e165bcad4856edd38cf5e599c.jar" />
+    </item>
+    <item
+        jar="C:\Users\Adam\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.2.4\a60a5e993c98c864010053cb901b7eab25306568\gson-2.2.4.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="a60a5e993c98c864010053cb901b7eab25306568">
+        <dex dex="C:\Users\Adam\Desktop\WeatherApp\app\build\intermediates\pre-dexed\debug\gson-2.2.4-f4a15206e054c442402450afb564f4fc3b186ede.jar" />
+    </item>
+
+</items>

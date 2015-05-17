@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.jarkos.weatherapp.MainActivity"
+    tools:context="com.example.adam.weatherapp.MainActivity"
     tools:ignore="MergeRootFrame"
     android:id="@+id/containerFragment">
 </FrameLayout>

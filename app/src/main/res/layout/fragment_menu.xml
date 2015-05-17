@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.jarkos.weatherapp.MenuFragment">
+    tools:context="com.example.adam.weatherapp.MenuFragment">
 
     <ExpandableListView
         android:id="@+id/expanadableListView"

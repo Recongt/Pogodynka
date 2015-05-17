@@ -2,19 +2,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#cb020502"
+    android:background="#d052ff0d"
     android:layout_gravity="center"
-    tools:context="com.example.jarkos.weatherapp.WeatherViewFragment"
+    tools:context="com.example.adam.weatherapp.WeatherViewFragment"
     android:orientation="horizontal">
-
-    <ImageView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:id="@+id/icon"
-        android:layout_marginTop="40dp"
-        android:minHeight="120dp"
-        android:minWidth="120dp"/>
 
 
     <TextView
@@ -25,7 +16,18 @@
         android:layout_height="wrap_content"
         android:text="Select city from list"
         android:textStyle="bold"
+        android:textSize="30dp"
         android:textColor="#ffff6900"
-        />
+        android:layout_gravity="center" />
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:id="@+id/icon"
+        android:layout_marginTop="40dp"
+        android:minHeight="120dp"
+        android:minWidth="120dp"
+        android:layout_gravity="center_horizontal|top" />
 
 </FrameLayout>
